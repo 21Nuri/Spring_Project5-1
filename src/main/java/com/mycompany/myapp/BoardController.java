@@ -14,14 +14,14 @@ import java.util.List;
 @RequestMapping(value="/board")
 public class BoardController {
     @Autowired
-    BoardDAO boardDAO;
+    BoardServicelmpl boardServicelmpl;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String boardlist(Model model){
         List<BoardVO> arraylist = new ArrayList<>();
-        arraylist = boardDAO.getBoardList();
+        arraylist = boardServicelmpl.getBoardList();
         System.out.println(arraylist.get(0).getTitle());
-        model.addAttribute("list", boardDAO.getBoardList());
+        model.addAttribute("list", boardServicelmpl.getBoardList());
         return "list";
     }
 
@@ -32,7 +32,7 @@ public class BoardController {
 
     @RequestMapping(value = "/addok", method = RequestMethod.POST)
     public String addPostOK(BoardVO vo){
-        int i = boardDAO.insertBoard(vo);
+        int i = boardServicelmpl.insertBoard(vo);
         if(i == 0) System.out.println("데이터 추가 실패");
         else System.out.println("데이터 추가 성공!!!");
         return "redirect:list";
@@ -40,7 +40,7 @@ public class BoardController {
 
     @RequestMapping(value = "/editok", method = RequestMethod.POST)
     public String editPostOK(BoardVO vo){
-        int i = boardDAO.updateBoard(vo);
+        int i = boardServicelmpl.updateBoard(vo);
         if(i == 0) System.out.println("데이터 추가 실패");
         else System.out.println("데이터 추가 성공!!!");
         return "redirect:list";
@@ -48,14 +48,14 @@ public class BoardController {
 
     @RequestMapping(value = "/editpost/{id}", method = RequestMethod.GET)
     public String editPost(@PathVariable("id") int id, Model model){
-        BoardVO boardVO = boardDAO.getBoard(id);
+        BoardVO boardVO = boardServicelmpl.getBoard(id);
         model.addAttribute("boardVO", boardVO);
         return "editform";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deletePost(@PathVariable("id") Integer id, Model model){
-        int i = boardDAO.deleteBoard(id);
+        int i = boardServicelmpl.deleteBoard(id);
         if(i==0)
             System.out.println("데이터 삭제 실패");
         else

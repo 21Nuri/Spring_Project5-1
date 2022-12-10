@@ -34,6 +34,16 @@
       <artifactId>spring-jdbc</artifactId>
       <version>5.3.23</version>
     </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.5.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>2.0.6</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>Spring_Project5-1</finalName>
