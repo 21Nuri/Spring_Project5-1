@@ -22,12 +22,12 @@ public class BoardController {
         arraylist = boardServicelmpl.getBoardList();
         System.out.println(arraylist.get(0).getTitle());
         model.addAttribute("list", boardServicelmpl.getBoardList());
-        return "list";
+        return "board/list";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addPost(){
-        return "addpostform";
+        return "board/addpostform";
     }
 
     @RequestMapping(value = "/addok", method = RequestMethod.POST)
@@ -50,7 +50,7 @@ public class BoardController {
     public String editPost(@PathVariable("id") int id, Model model){
         BoardVO boardVO = boardServicelmpl.getBoard(id);
         model.addAttribute("boardVO", boardVO);
-        return "editform";
+        return "board/editform";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)

@@ -47,5 +47,6 @@
 </table>
 
 <br/><a href="add">Add New Post</a>
+<br/><a href="../login/logout">Logout</a>
 </body>
 </html>
